@@ -1,5 +1,5 @@
-python -m venv .venv
-venv\Scripts\activate.ps1 # Windows PowerShell
+.python -m venv .venv
+.venv\Scripts\activate.ps1 # Windows PowerShell
 pip install django
 
 # Создание проекта
@@ -8,7 +8,7 @@ django-admin startproject myproject
 # Запуск сервера
 python manage.py runserver # default запуск
 python manage.py runserver 8080 # порт 8080
-python manage.py runserver 0.0.0.0 # запуск в локальную сеть по всем ip, в ALLOWED_HOSTS нужно внести разрешенные адреса
+python manage.py runserver 0.0.0.0:80 # запуск в локальную сеть по всем ip, в ALLOWED_HOSTS нужно внести разрешенные адреса
 
 # создание приложения
 "python manage.py startapp <app_name>", где <app_name> - название приложения.
@@ -34,13 +34,26 @@ python manage.py startapp myapp
 ● manage.py - файл для управления проектом Django (запуск сервера, создание миграций и т.д.)
 
 # Добавление приложения в проект
-Для этого нужно добавить название приложения в список INSTALLED_APPS.  (файл settings.py)
+Для этого нужно добавить название приложения в список INSTALLED_APPS.  (файл settings.py):
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'gameapp',  # <=== наше приложение
+]
 
 # Создание представления в приложении
-Для создания представления нужно определить функцию в файле views.py
+Для создания представления нужно определить функцию в файле views.py:
+from django.http import HttpResponse
+def index(request):
+    #logger.info('Index page accessed')
+    return HttpResponse("<h1>Hello, world!</h1>")
 
-# Настройка путей
-Маршруты (routes) определяются в файле urls.py:
+# Настройка путей urls.py проекта
+Маршруты (routes) определяются в файле urls.py проекта:
 from django.contrib import admin
 from django.urls import path, include
 
