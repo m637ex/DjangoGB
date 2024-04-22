@@ -3,7 +3,8 @@ from . import views # или from views import index # тогда далее ind
 
 urlpatterns = [
     path('', views.index, name='index'),    
-    path('heads_or_tails/', views.heads_or_tails, name='heads_or_tails'),
+    path('coin/', views.coin, name='coin'),    
+    path('coin_values/', views.coin_values, name='coin_values'), # последние 5 бросков
     path('cube6/', views.cube6, name='cube6'),
     path('random100/', views.random100, name='random100'),
 ]

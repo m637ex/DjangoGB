@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '192.168.1.18',
     '192.168.1.33',
+    '192.168.1.142',
 ]
 
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gameapp',
     'homeworkapp',
+    'blogapp',
 ]
 
 MIDDLEWARE = [
@@ -157,7 +159,7 @@ LOGGING = {
             'handlers': ['console', 'file'],
             'level': 'INFO',
         },
-        'myapp': {
+        'homeworkapp': {
             'handlers': ['console', 'file'],
             'level': 'DEBUG',
             'propagate': True,

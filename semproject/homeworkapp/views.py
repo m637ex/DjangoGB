@@ -49,5 +49,5 @@ def index(request):
     return HttpResponse(html_index)
 
 def about(request):    
-    logger.info('about page accessed')
+    logger.info('About page accessed')
     return HttpResponse(html_about)
