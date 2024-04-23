@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+# Проверяем существование папки и создаем её, если она не существует
+log_dir = './log/'
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
