@@ -5,7 +5,7 @@ from modelapp2.models import Author, Post
 # получим 10 авторов и 100 статей.
 
 class Command(BaseCommand):
-    help = "Generate fake authors and posts."
+    help = "Generate fake authors and posts." 
     
     def add_arguments(self, parser):
         parser.add_argument('count', type=int, help='User ID')

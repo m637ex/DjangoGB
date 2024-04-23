@@ -51,3 +51,7 @@ def index(request):
 def about(request):    
     logger.info('About page accessed')
     return HttpResponse(html_about)
+
+def store(request):    
+    logger.info('Store page accessed')
+    return HttpResponse('<h1>Store page accessed</h1>')

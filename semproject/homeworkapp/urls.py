@@ -4,4 +4,5 @@ from . import views # или from views import index # тогда далее ind
 urlpatterns = [
     path('', views.index, name='index'),    
     path('about/', views.about, name='about'),
+    path('store/', views.store, name='store'),
 ]

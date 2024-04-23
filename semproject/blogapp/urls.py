@@ -3,5 +3,7 @@ from . import views # или from views import index # тогда далее ind
 
 urlpatterns = [
     path('', views.index, name='index'),    
-    path('blog/', views.blog, name='blog'),
+    path('view_authors/', views.view_authors, name='view_authors'),
+    path('create_author/', views.create_author, name='create_author'),    
 ]
+ 
