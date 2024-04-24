@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'modelapp2',
+    'myapp3',
 ]
 
 '''
@@ -73,7 +74,9 @@ ROOT_URLCONF = 'lessonproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates', # список где django ищет файлы шаблонов в папке проекта /myproject/templates/ вместо /myproject/myapp/templates/myapp/
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -2,6 +2,10 @@
 # *.db
 *.pdf
 
+# work dir
+gb_django/
+knk/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
