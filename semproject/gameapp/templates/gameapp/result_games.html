@@ -1,0 +1,32 @@
+{% extends 'gameapp/base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block game_name %}
+  {% if not game_name %}
+    <h1 class="col-12 col-md-10 display-2"> Название этой игры еще не придумали </h1>
+  {% else %}
+    <h1 class="col-12 col-md-10 display-2"> Игра: {{ game_name }}</h1>
+  {% endif %}    
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    {% if content %}
+      <h1 class="col-12 col-md-10 display-2"> {{ content }} </h1>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block result_game %}
+  <div class="row">
+    {% if not result_game %}
+      <h1 class="col-12 col-md-10 display-2"> Какая-то безрезультативная игра получилась </h1>
+    {% else %}
+      <h1 class="col-12 col-md-10 display-2"> Результат этот игры: {{ result_game }}</h1>
+    {% endif %}
+  </div>
+{% endblock %}

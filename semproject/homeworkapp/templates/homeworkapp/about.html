@@ -1,0 +1,18 @@
+{% extends 'homeworkapp/base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    {% if not name %}
+      <h1 class="col-12 col-md-10 display-2">Привет, меня зовут Anonimus</h1>
+    {% else %}
+      <h1 class="col-12 col-md-10 display-2">Привет, меня зовут {{ name }}</h1>
+    {% endif %}
+
+    <img src="{% static image_url %}" class="col-12 col-md-6 img-fluid rounded-circle" alt="фото меня" width="300" />
+  </div>
+{% endblock %}

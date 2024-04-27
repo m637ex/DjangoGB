@@ -2,15 +2,39 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
-import random
 import logging
 from .models import Author
 
 logger = logging.getLogger(__name__)
 
+_links_menu = [ # список ссылок для меню
+    {'url': '/blog/',
+        'name': 'Главная'},
+    {'url': '/blog/about/',
+        'name': 'Обо мне'},
+]
+
 def index(request):
-    logger.info('Index page accessed')
-    return HttpResponse("<h1>Hello, blogers!</h1>")
+    context = {
+        "title": "Главная страница",
+        "header": "Главная страница",
+        "footer": "Главная страница",
+        "name": "Andrey",
+        'links_menu': _links_menu,
+        "image_url": '/images/cat.jpg',
+    }
+    return render(request, "blogapp/index.html", context=context)
+
+def about(request):
+    context = {
+        "title": "Обо мне",
+        "header": "Обо мне",
+        "footer": "Обо мне",
+        'links': _links_menu,
+        "about_text": "My about text",
+        "image_url": '/images/foto.jpg',
+    }
+    return render(request, "blogapp/about.html", context=context)
 
 def view_authors(request):    
     # coin = Coin(site=random.choice(['Орёл', 'Решка'])) # создаём модель 
