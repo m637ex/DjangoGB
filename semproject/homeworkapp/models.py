@@ -29,3 +29,8 @@ class Order(models.Model):
     products = models.ManyToManyField(Product) # — связь с моделью «Товар», указывает на товары, входящие в заказ
     total_price = models.DecimalField(max_digits=16, decimal_places=2) # — общая сумма заказа
     date_created = models.DateTimeField(auto_now_add=True) # — дата создания заказа
+    
+
+class PhotoProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='photos') # добавили поле related_name='photos' для обратной связи от Product к PhotoProduct, чтобы упростить доступ к фотографиям товара.
+    image = models.ImageField(upload_to='products/') # pip install Pillow

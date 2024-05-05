@@ -1,0 +1,15 @@
+{% extends 'homeworkapp/base.html' %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <a href="/hw/products/"><-- назад</a>
+  <h2>Загрузите изображение</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Загрузить</button>
+  </form>
+{% endblock %}
