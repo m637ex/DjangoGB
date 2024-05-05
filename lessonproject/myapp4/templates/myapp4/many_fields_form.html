@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Демонстрация полей формы
+{% endblock %}
+
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% comment %} form.as_p - каждый элемент на новой строке {% endcomment %}
+    <input type="submit" value="Отправить" />
+  </form>
+{% endblock %}

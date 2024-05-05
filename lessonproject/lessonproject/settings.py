@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'myapp',
     'modelapp2',
     'myapp3',
+    'myapp4',
+    'myapp5',
 ]
 
 '''
@@ -58,6 +60,10 @@ INSTALLED_APPS = [
 файлами.
 ● myapp - созданное вами приложение
 '''
+
+# сохрание файлов
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media' # BASE_DIR - базовый каталог приложения
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
@@ -178,6 +184,21 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'myapp3': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'myapp4': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'myapp5': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
     },
 }
 
@@ -203,3 +224,5 @@ LOGGING = {
 ● propagate: если значение равно True, то сообщения будут передаваться родительским логгерам. 
     Если значение равно False, сообщения не будут передаваться родительским логгерам.
 '''
+
+
