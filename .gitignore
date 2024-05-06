@@ -1,6 +1,7 @@
 #files
 # *.db
 *.pdf
+media/
 
 # work dir
 gb_django/

@@ -15,7 +15,8 @@ python manage.py createsuperuser
 смена пароля
 python manage.py changepassword <username>
 admin
-Aa!030586
+lesson - Aa!030586 
+seminar- Aa!123123
 
 ## Добавление пользовательских моделей в административную панель
 # Создание моделей
