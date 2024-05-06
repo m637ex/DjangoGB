@@ -8,7 +8,7 @@ class Client(models.Model):
     phone = models.CharField(max_length=16) # — номер телефона клиента
     address = models.TextField() # — адрес клиента
     date_created = models.DateTimeField(auto_now_add=True) # — дата регистрации клиента
-    
+     
     def __str__(self):
         return f'Name: {self.name}, email: {self.email}, phone: {self.phone}, address: {self.address}'
     
