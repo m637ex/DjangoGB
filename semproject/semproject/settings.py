@@ -21,10 +21,7 @@ if not os.path.exists(log_dir):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Для всех приложений
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
+ 
 # Для приложения homeworkapp отдельная папка "media"
 # HOMEWORKAPP_MEDIA_ROOT = os.path.join(BASE_DIR, 'homeworkapp', 'media')
 # HOMEWORKAPP_MEDIA_URL = '/homeworkapp/media/'
@@ -33,16 +30,21 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*#8ex#!5kj-r^2$pxv8s$(!iuk8jce0^pdlw@c3-wy6+@s0q-7'
+#SECRET_KEY = 'django-insecure-*#8ex#!5kj-r^2$pxv8s$(!iuk8jce0^pdlw@c3-wy6+@s0q-7'
+SECRET_KEY = os.getenv('SECRET_KEY') # Секретный ключ стоит хранить не в файле настроек, а в переменных окружения. 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False # В первую очередь выключаем режим отладки
+# Повышаем безопасность
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
     '192.168.1.18',
     '192.168.1.33',
     '192.168.1.142',
+    'm637ex.pythonanywhere.com',
 ]
 
 
@@ -96,9 +98,20 @@ WSGI_APPLICATION = 'semproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'm637ex$default',
+        'USER': 'm637ex',
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
+        'HOST': 'm637ex.mysql.pythonanywhere-services.com',
+        'OPTIONS': {
+            'init_command': "SET NAMES 'utf8mb4';SET sql_mode='STRICT_TRANS_TABLES'", 
+            'charset': 'utf8mb4',
+        },
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 
@@ -136,7 +149,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+# Константа для правильной настройки работы со статическими файлами на сервере:
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static/'
+
+# сохрание файлов
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media' # BASE_DIR - базовый каталог приложения
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
